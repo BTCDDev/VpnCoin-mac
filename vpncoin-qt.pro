@@ -11,6 +11,10 @@ greaterThan(QT_MAJOR_VERSION, 4) {
     DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
 }
 
+mytarget.commands = cd tinc && autoreconf -i -v -f && ./configure && make
+QMAKE_EXTRA_TARGETS += mytarget
+PRE_TARGETDEPS += mytarget
+
 # for boost 1.37, add -mt to the boost libraries
 # use: qmake BOOST_LIB_SUFFIX=-mt
 # for boost thread win32 with _win32 sufix
